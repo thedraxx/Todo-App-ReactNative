@@ -7,7 +7,9 @@ export const todoSlice = createSlice({
   },
   reducers: {
     //  Cuando los pokemons empiezan a cargar
-    addTodo: () => {},
+    addTodo: (state: {todos: string[]}, {payload}: any) => {
+      state.todos.push(payload);
+    },
   },
 });
 
