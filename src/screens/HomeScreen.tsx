@@ -1,18 +1,13 @@
 import React from 'react';
-import {
-  Button,
-  Text,
-  View,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import {Completed} from '../components/Completed';
 import {Pending} from '../components/Pending';
+import styled from 'styled-components/native';
 
 export const HomeScreen = ({navigation}: any) => {
   return (
     <View>
-      <Text>Todo-App</Text>
+      <MyText>Todo-App</MyText>
       <Completed />
       <Pending />
       <Button
@@ -22,3 +17,8 @@ export const HomeScreen = ({navigation}: any) => {
     </View>
   );
 };
+
+export const MyText = styled.Text`
+  font-size: 25;
+  color: black;
+`;

@@ -1,10 +1,21 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import styled from 'styled-components/native';
 
 export const Completed = () => {
   return (
-    <View>
-      <Text>Completed</Text>
-    </View>
+    <ViewCompleted>
+      <MyText>Completed Tasks</MyText>
+    </ViewCompleted>
   );
 };
+
+export const MyText = styled.Text`
+  font-size: 15;
+  color: black;
+`;
+
+export const ViewCompleted = styled.View`
+  position: relative;
+  left: 15;
+  top: 5;
+`;

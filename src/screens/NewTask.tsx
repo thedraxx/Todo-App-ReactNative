@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {Button, Text, TextInput, View} from 'react-native';
+import {Button, Text, TextInput, TouchableHighlight, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {addTodo} from '../store/slice/TodoSlice';
+import styled from 'styled-components/native';
 
 interface inputs {
+  _id: number;
   title: string;
   deadline: string;
   startTime: string;
@@ -16,6 +18,7 @@ export const NewTask = ({navigation}: any) => {
   const dispatch = useDispatch();
 
   const [onChange, setOnChange] = useState<inputs>({
+    _id: new Date().getTime(),
     title: '',
     deadline: '',
     startTime: '',
@@ -28,38 +31,120 @@ export const NewTask = ({navigation}: any) => {
   };
 
   const handleSubmit = () => {
-    console.warn(onChange);
+    console.log(onChange);
+    dispatch(addTodo(onChange));
   };
 
   return (
-    <View>
-      <Text>Add Task</Text>
-      <Text>Title</Text>
+    <View style={{backgroundColor: 'white'}}>
+      <TextTitles>Title</TextTitles>
       <TextInput
-        placeholder="Title"
+        placeholder="Design team meeting"
         onChangeText={text => handleChange('title', text)}
+        style={{
+          borderColor: 'white',
+          backgroundColor: '#ededed',
+          color: 'black',
+          borderWidth: 1,
+          padding: 15,
+          margin: 20,
+          borderRadius: 10,
+        }}
       />
-      <Text>Deadline</Text>
+      <TextTitles>Deadline</TextTitles>
       <TextInput
-        placeholder="Deadline"
+        placeholder="2021-02-28"
         onChangeText={text => handleChange('deadline', text)}
+        style={{
+          borderColor: 'white',
+          backgroundColor: '#ededed',
+          color: 'black',
+          borderWidth: 1,
+          padding: 15,
+          margin: 20,
+          borderRadius: 10,
+        }}
       />
-      <Text>StartTime</Text>
-      <TextInput
-        placeholder="StartTime"
-        onChangeText={text => handleChange('StartTime', text)}
-      />
-      <Text>EndTime</Text>
-      <TextInput
-        placeholder="EndTime"
-        onChangeText={text => handleChange('EndTime', text)}
-      />
-      <Text>Remind</Text>
+
+      <View>
+        <TextTitles>Start time</TextTitles>
+        <TextInput
+          placeholder="StartTime"
+          onChangeText={text => handleChange('StartTime', text)}
+          style={{
+            borderColor: 'white',
+            backgroundColor: '#ededed',
+            color: 'black',
+            borderWidth: 1,
+            padding: 15,
+            margin: 20,
+            borderRadius: 10,
+          }}
+        />
+        <TextTitles>End time</TextTitles>
+        <TextInput
+          placeholder="EndTime"
+          onChangeText={text => handleChange('EndTime', text)}
+          style={{
+            borderColor: 'white',
+            backgroundColor: '#ededed',
+            color: 'black',
+            borderWidth: 1,
+            padding: 15,
+            margin: 20,
+            borderRadius: 10,
+          }}
+        />
+      </View>
+
+      <TextTitles>Remind</TextTitles>
       <TextInput
         placeholder="Remind"
         onChangeText={text => handleChange('Remind', text)}
+        style={{
+          borderColor: 'white',
+          backgroundColor: '#ededed',
+          color: 'black',
+          borderWidth: 1,
+          padding: 15,
+          margin: 20,
+          borderRadius: 10,
+        }}
       />
-      <Button title="Create a Task" onPress={handleSubmit} />
+      <MyButon onPress={handleSubmit}>
+        <View>
+          <TextButon>Touch Here</TextButon>
+        </View>
+      </MyButon>
     </View>
   );
 };
+
+const TextTitles = styled.Text`
+  color: black;
+  font-size: 15px;
+  left: 25px;
+  top: 15px;
+`;
+
+const TextButon = styled.Text`
+  color: #ffffff;
+  font-size: 15px;
+`;
+
+const MyButon = styled.TouchableHighlight`
+  background-color: #74c190;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  padding: 5%;
+  border-radius: 30px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+const MyView = styled.View`
+  display: 'inline-block';
+`;
