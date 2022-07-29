@@ -5,7 +5,7 @@
   </a>
 </p>
 
-> El repositorio consiste en un Portfolio hecho en REACTJS .</br>
+> El repositorio consiste en un TodoApp hecho en REACT Native .</br>
 
 ## ⚛️ Versión de React
 ```
@@ -32,6 +32,14 @@ Redux-Toolkit: ^1.8.3
 React-Navigation: 6.0.0
 ```
 
+## ⚛️ Versión de React-Native-Bouncy-Checkbox
+```
+React-Native-Bouncy-Checkbox: ^3.0.2
+```
+## ⚛️ Versión de React-Native-Datepicker
+```
+React-Native-Datepicker: ^4.2.5
+```
 ## 🔮 Futuro del Proyecto
 
 Se espera seguir agregando proyectos y funcionalidades.

@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import {addTodo} from '../store/slice/TodoSlice';
 import {Button, Text, TextInput, TouchableHighlight, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {addTodo} from '../store/slice/TodoSlice';
+import DatePicker from 'react-native-date-picker';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 
 interface inputs {
@@ -26,17 +27,35 @@ export const NewTask = ({navigation}: any) => {
     Remind: '',
   });
 
+  // DatePicker Init
+  const [dateInit, setDateInit] = useState(new Date());
+  const [openInit, setOpenInit] = useState(false);
+
+  // DatePicker Fin
+  const [dateFinish, setDateFinish] = useState(new Date());
+  const [openFinish, setOpenFinish] = useState(false);
+
   const handleChange = (name: string, value: string) => {
     setOnChange({...onChange, [name]: value});
   };
 
   const handleSubmit = () => {
-    console.log(onChange);
     dispatch(addTodo(onChange));
   };
 
+  // Esto escucha por los cambios en el datePicker
+  useEffect(() => {
+    handleChange('startTime', dateInit.toLocaleString());
+  }, [dateInit]);
+
+  useEffect(() => {
+    handleChange('endTime', dateFinish.toLocaleString());
+  }, [dateFinish]);
+
+  console.log(onChange);
+
   return (
-    <View style={{backgroundColor: 'white'}}>
+    <GeneralView style={{backgroundColor: 'white'}}>
       <TextTitles>Title</TextTitles>
       <TextInput
         placeholder="Design team meeting"
@@ -65,37 +84,54 @@ export const NewTask = ({navigation}: any) => {
           borderRadius: 10,
         }}
       />
+      <CustomView>
+        <TextTime>Start time</TextTime>
+        <TextTime>End time</TextTime>
+      </CustomView>
 
-      <View>
-        <TextTitles>Start time</TextTitles>
-        <TextInput
-          placeholder="StartTime"
-          onChangeText={text => handleChange('StartTime', text)}
-          style={{
-            borderColor: 'white',
-            backgroundColor: '#ededed',
-            color: 'black',
-            borderWidth: 1,
-            padding: 15,
-            margin: 20,
-            borderRadius: 10,
+      <ViewTime>
+        <ButtonTime onPress={() => setOpenInit(true)}>
+          <View>
+            <TextTimeInput>{`${dateInit}`}</TextTimeInput>
+          </View>
+        </ButtonTime>
+        <DatePicker
+          mode="date"
+          locale="en-US"
+          modal
+          open={openInit}
+          date={dateInit}
+          onConfirm={date => {
+            setOpenInit(false);
+            setDateInit(date);
+            console.log('fecha inicio', date);
+          }}
+          onCancel={() => {
+            setOpenFinish(false);
           }}
         />
-        <TextTitles>End time</TextTitles>
-        <TextInput
-          placeholder="EndTime"
-          onChangeText={text => handleChange('EndTime', text)}
-          style={{
-            borderColor: 'white',
-            backgroundColor: '#ededed',
-            color: 'black',
-            borderWidth: 1,
-            padding: 15,
-            margin: 20,
-            borderRadius: 10,
+
+        <ButtonTime onPress={() => setOpenFinish(true)}>
+          <View>
+            <TextTimeInput>{`${dateFinish}`}</TextTimeInput>
+          </View>
+        </ButtonTime>
+        <DatePicker
+          mode="date"
+          locale="en-US"
+          modal
+          open={openFinish}
+          date={dateFinish}
+          onConfirm={date => {
+            setOpenFinish(false);
+            setDateFinish(date);
+            console.log('fecha fin', date);
+          }}
+          onCancel={() => {
+            setOpenFinish(false);
           }}
         />
-      </View>
+      </ViewTime>
 
       <TextTitles>Remind</TextTitles>
       <TextInput
@@ -111,20 +147,42 @@ export const NewTask = ({navigation}: any) => {
           borderRadius: 10,
         }}
       />
+      <TextTitles>Repeat</TextTitles>
+      <TextInput
+        placeholder="Remind"
+        onChangeText={text => handleChange('Remind', text)}
+        style={{
+          borderColor: 'white',
+          backgroundColor: '#ededed',
+          color: 'black',
+          borderWidth: 1,
+          padding: 15,
+          margin: 20,
+          borderRadius: 10,
+        }}
+      />
       <MyButon onPress={handleSubmit}>
         <View>
-          <TextButon>Touch Here</TextButon>
+          <TextButon>Create a Task</TextButon>
         </View>
       </MyButon>
-    </View>
+    </GeneralView>
   );
 };
 
+// GeneralView
+const GeneralView = styled.View`
+  flex: 1;
+  background-color: #ededed;
+  width: 100%;
+`;
+
 const TextTitles = styled.Text`
-  color: black;
+  color: #000000;
   font-size: 15px;
   left: 25px;
   top: 15px;
+  font-weight: bold;
 `;
 
 const TextButon = styled.Text`
@@ -133,18 +191,51 @@ const TextButon = styled.Text`
 `;
 
 const MyButon = styled.TouchableHighlight`
-  background-color: #74c190;
-  display: flex;
   align-items: center;
+  background-color: #66c689;
+  border-radius: 15px;
+  bottom: 0;
+  display: flex;
   justify-content: center;
-  width: 50%;
-  padding: 5%;
-  border-radius: 30px;
   margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 3%;
+  width: 80%;
 `;
 
-const MyView = styled.View`
-  display: 'inline-block';
+const ButtonTime = styled.TouchableHighlight`
+  align-items: center;
+  background-color: #ededed;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  width: 30%;
+`;
+
+const ViewTime = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+`;
+
+const CustomView = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  margin-bottom: 5px;
+`;
+
+const TextTime = styled.Text`
+  color: #000000;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TextTimeInput = styled.Text`
+  color: #7c7c7c;
+  font-size: 15px;
 `;
