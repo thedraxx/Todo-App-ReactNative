@@ -44,6 +44,13 @@ React-Native-Bouncy-Checkbox: ^3.0.2
 React-Native-Datepicker: ^4.2.5
 ```
 
+More Details: 
+
+![Screenshot_2](https://user-images.githubusercontent.com/55867157/181989555-08dc6649-ef64-4317-a7e7-de254b465805.png)
+![Screenshot_3](https://user-images.githubusercontent.com/55867157/181989646-8d838b22-54d6-42d0-9690-1dc71af7e826.png)
+![Screenshot_4](https://user-images.githubusercontent.com/55867157/181989799-50f7b880-30b9-4dbd-b098-866804480b9b.png)
+
+
 ## ✉️ Contact
 
 gmail: cerrano.francisco22@gmail.com
