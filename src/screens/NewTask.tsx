@@ -1,9 +1,9 @@
-import {inputs} from '../interfaces/generalInterfaces.d';
-import {addTodo} from '../store/slice/TodoSlice';
-import {TextInput, View} from 'react-native';
-import {useDispatch} from 'react-redux';
+import { TextInput, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import DatePicker from 'react-native-date-picker';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { addTodo } from '../store/slice/TodoSlice';
+import { inputs } from '../interfaces/generalInterfaces.d';
 import {
   ButtonDeadline,
   ButtonTime,
@@ -18,7 +18,7 @@ import {
   ViewTime,
 } from '../styles/styles';
 
-export const NewTask = ({navigation}: any) => {
+export function NewTask({ navigation }: any) {
   // Dispatch redux
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ export const NewTask = ({navigation}: any) => {
 
   // This manage the state of the input
   const handleChange = (name: string, value: string) => {
-    setOnChange({...onChange, [name]: value});
+    setOnChange({ ...onChange, [name]: value });
   };
 
   // Deadline Picker
@@ -63,11 +63,11 @@ export const NewTask = ({navigation}: any) => {
   }, [dateInit, dateFinish, dateDeadline]);
 
   return (
-    <GeneralView style={{backgroundColor: 'white'}}>
+    <GeneralView style={{ backgroundColor: 'white' }}>
       <TextTitles>Title</TextTitles>
       <TextInput
         placeholder="Design team meeting"
-        onChangeText={text => handleChange('title', text)}
+        onChangeText={(text) => handleChange('title', text)}
         style={{
           borderColor: 'white',
           backgroundColor: '#ededed',
@@ -93,7 +93,7 @@ export const NewTask = ({navigation}: any) => {
           modal
           open={openDateDeadline}
           date={dateDeadline}
-          onConfirm={date => {
+          onConfirm={(date) => {
             setOpenDateDeadline(false);
             setDeadline(date);
           }}
@@ -119,7 +119,7 @@ export const NewTask = ({navigation}: any) => {
           modal
           open={openInit}
           date={dateInit}
-          onConfirm={date => {
+          onConfirm={(date) => {
             setOpenInit(false);
             setDateInit(date);
           }}
@@ -139,7 +139,7 @@ export const NewTask = ({navigation}: any) => {
           modal
           open={openFinish}
           date={dateFinish}
-          onConfirm={date => {
+          onConfirm={(date) => {
             setOpenFinish(false);
             setDateFinish(date);
           }}
@@ -152,7 +152,7 @@ export const NewTask = ({navigation}: any) => {
       <TextTitles>Remind</TextTitles>
       <TextInput
         placeholder="10 minutes early"
-        onChangeText={text => handleChange('Remind', text)}
+        onChangeText={(text) => handleChange('Remind', text)}
         style={{
           borderColor: 'white',
           backgroundColor: '#ededed',
@@ -166,7 +166,7 @@ export const NewTask = ({navigation}: any) => {
       <TextTitles>Repeat</TextTitles>
       <TextInput
         placeholder="Weekly"
-        onChangeText={text => handleChange('Remind', text)}
+        onChangeText={(text) => handleChange('Remind', text)}
         style={{
           borderColor: 'white',
           backgroundColor: '#ededed',
@@ -184,4 +184,4 @@ export const NewTask = ({navigation}: any) => {
       </MyButon>
     </GeneralView>
   );
-};
+}

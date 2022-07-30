@@ -1,7 +1,7 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Completed} from '../components/Completed';
-import {Pending} from '../components/Pending';
+import { View } from 'react-native';
+import { Completed } from '../components/Completed';
+import { Pending } from '../components/Pending';
 import {
   MyButon,
   MyTextCompleted,
@@ -9,9 +9,12 @@ import {
   TextButon,
 } from '../styles/styles';
 
-export const HomeScreen = ({navigation}: any) => {
+export function HomeScreen({ navigation }: any) {
   return (
-    <View style={{top: 0, backgroundColor: 'white', padding: 0, flex: 1}}>
+    <View style={{
+      top: 0, backgroundColor: 'white', padding: 0, flex: 1,
+    }}
+    >
       <MyTextCompleted>Completed Tasks</MyTextCompleted>
       {/* Component Completed Tasks */}
       <Completed />
@@ -21,9 +24,9 @@ export const HomeScreen = ({navigation}: any) => {
       {/* OnPress Buton, navigate to screen to add a new task */}
       <MyButon onPress={() => navigation.navigate('Add task')}>
         <View>
-          <TextButon>Add a task</TextButon>
+          <TextButon>Add a task </TextButon>
         </View>
       </MyButon>
     </View>
   );
-};
+}

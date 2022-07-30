@@ -60,9 +60,7 @@ export const TextTime = styled.Text`
   color: #000000;
   font-size: 15px;
   font-weight: bold;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+  margin-top: 5px;
 `;
 
 export const TextTimeInput = styled.Text`
@@ -79,7 +77,6 @@ export const TextDeadLine = styled.Text`
 `;
 
 // HomeScreen Styles
-
 export const MyTextCompleted = styled.Text`
   font-size: 20px;
   color: black;
@@ -99,22 +96,18 @@ export const MyTextPending = styled.Text`
 `;
 
 export const MyButon = styled.TouchableHighlight`
-  position: absolute;
   display: flex;
-  background-color: #50e587;
   align-items: center;
   justify-content: center;
+  margin: auto;
+  background-color: #50e587;
+  position: relative;
   width: 50%;
   padding: 5% 0;
   border-radius: 10px;
-  bottom: 20px;
-  left: 25%;
-  right: 25%;
 `;
 
-
 // Completed 
-
 export const MyText = styled.Text`
   font-size: 15px;
   color: black;
@@ -128,7 +121,7 @@ font-size: 15px;
 
 export const ViewCompleted = styled.View`
   position: relative;
-  left: 15px;
+  left: 12px;
   top: 0px;
   padding-top: 2px;
   padding-bottom: 20px;
@@ -137,6 +130,8 @@ export const ViewCompleted = styled.View`
 export const MyTextTask = styled.Text`
   font-size: 15px;
   color: black;
+
+
 `;
 export const ViewCompletedTasks = styled.View`
   position: relative;
@@ -151,19 +146,13 @@ export const ViewCompletedTasks = styled.View`
 
 export const ViewPending = styled.View`
   position: relative;
-  left: 15px;
+  left: 12px;
   top: 0px;
   padding-top: 2px;
   padding-bottom: 20px;
 `;
 
-export const ViewPendingTasks = styled.View`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  top: 15px;
-`;
+
 export const MyTextTaskPending = styled.Text`
 font-size: 15px;
   color: black;

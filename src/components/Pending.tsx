@@ -1,16 +1,16 @@
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import React, {useEffect, useState} from 'react';
-import {addTodoCompleted} from '../store/slice/TodoSlice';
+import React, { useEffect, useState } from 'react';
+import { addTodoCompleted } from '../store/slice/TodoSlice';
 import {
   MyTextTask,
   MyTextTaskPending,
+  ViewCompletedTasks,
   ViewPending,
-  ViewPendingTasks,
 } from '../styles/styles';
 
 export const Pending = () => {
-  const {todos} = useSelector((state: any) => state.todo);
+  const { todos } = useSelector((state: any) => state.todo);
 
   const [Tasks, setTasks] = useState([]);
 
@@ -31,15 +31,16 @@ export const Pending = () => {
       ) : (
         Tasks.map((task: any) => {
           return (
-            <ViewPendingTasks key={task._id}>
+            <ViewCompletedTasks key={task._id}>
               <BouncyCheckbox
-                unfillColor="#FFFFFF"
+                isChecked={false}
+                style={{ padding: 10 }}
                 onPress={() => {
                   HandleSelected(task._id);
                 }}
               />
               <MyTextTask>{task.title}</MyTextTask>
-            </ViewPendingTasks>
+            </ViewCompletedTasks>
           );
         })
       )}
