@@ -10,11 +10,6 @@
 
 <br> The app is made with the following technologies:</br>
 
-## ⚛️ React
-```
-react: 18
-```
-
 ## ⚛️ React-Native
 ```
  React-Native: 0.69.3
