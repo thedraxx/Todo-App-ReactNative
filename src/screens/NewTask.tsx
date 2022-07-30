@@ -27,6 +27,9 @@ export const NewTask = ({navigation}: any) => {
     Remind: '',
   });
 
+  let hours = new Date().getTime();
+  console.log('hours', hours);
+
   // DatePicker Init
   const [dateInit, setDateInit] = useState(new Date());
   const [openInit, setOpenInit] = useState(false);
@@ -92,11 +95,11 @@ export const NewTask = ({navigation}: any) => {
       <ViewTime>
         <ButtonTime onPress={() => setOpenInit(true)}>
           <View>
-            <TextTimeInput>{`${dateInit}`}</TextTimeInput>
+            <TextTimeInput>{`${dateInit.getHours()} : ${dateInit.getMinutes()}`}</TextTimeInput>
           </View>
         </ButtonTime>
         <DatePicker
-          mode="date"
+          mode="time"
           locale="en-US"
           modal
           open={openInit}
@@ -113,11 +116,11 @@ export const NewTask = ({navigation}: any) => {
 
         <ButtonTime onPress={() => setOpenFinish(true)}>
           <View>
-            <TextTimeInput>{`${dateFinish}`}</TextTimeInput>
+            <TextTimeInput>{`${dateFinish.getHours()} : ${dateFinish.getMinutes()}`}</TextTimeInput>
           </View>
         </ButtonTime>
         <DatePicker
-          mode="date"
+          mode="time"
           locale="en-US"
           modal
           open={openFinish}

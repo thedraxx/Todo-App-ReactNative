@@ -1,13 +1,20 @@
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import styled from 'styled-components/native';
+import {addTodoCompleted} from '../store/slice/TodoSlice';
 
 export const Pending = () => {
   const {todos} = useSelector((state: any) => state.todo);
 
   const [Tasks, setTasks] = useState([]);
   const [isSelected, setIsSelected] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const HandleSelected = (id: number) => {
+    dispatch(addTodoCompleted(id));
+  };
 
   useEffect(() => {
     setTasks(todos);
@@ -21,7 +28,11 @@ export const Pending = () => {
         Tasks.map((task: any) => {
           return (
             <ViewPendingTasks key={task._id}>
-              <BouncyCheckbox onPress={(isChecked: boolean) => {}} />
+              <BouncyCheckbox
+                onPress={() => {
+                  HandleSelected(task._id);
+                }}
+              />
               <MyTextTask>{task.title}</MyTextTask>
             </ViewPendingTasks>
           );
@@ -45,6 +56,7 @@ export const ViewPending = styled.View`
   position: relative;
   left: 15px;
   top: 5px;
+  padding: 25px;
 `;
 
 export const ViewPendingTasks = styled.View`
