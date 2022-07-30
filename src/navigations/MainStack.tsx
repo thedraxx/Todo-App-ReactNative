@@ -10,9 +10,9 @@ export const MainStack = () => {
     <>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="To-Do App">
-          {/* Home */}
+          {/* Screen Home */}
           <Stack.Screen name="To-Do App" component={HomeScreen} />
-          {/* NewTask */}
+          {/* Screen NewTask */}
           <Stack.Screen name="Add task" component={NewTask} />
         </Stack.Navigator>
       </NavigationContainer>

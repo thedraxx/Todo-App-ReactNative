@@ -1,52 +1,52 @@
-<h1 align="center">Bienvenido 👋</h1>
+<h1 align="center">Welcome 👋</h1>
 <p>
   <a href="https://twitter.com/ThedraxxWorld" target="_blank">
     <img alt="Twitter: thedraxx" src="https://img.shields.io/twitter/follow/ThedraxxWorld.svg?style=social" />
   </a>
 </p>
 
-> El repositorio consiste en un TodoApp hecho en REACT Native .</br>
+<br> This repository consist in a To-Do App made in React Native .</br>
 
-## ⚛️ Versión de React
+
+<br> The app is made with the following technologies:</br>
+
+## ⚛️ React
 ```
 react: 18
 ```
 
-## ⚛️ Versión de React-Native
+## ⚛️ React-Native
 ```
  React-Native: 0.69.3
 ```
 
-## ⚛️ Versión de React-Redux
+## ⚛️ React-Redux
 ```
  React-Redux: ^8.0.2
 ```
 
-## ⚛️ Versión de Redux-Toolkit
+## ⚛️ Redux-Toolkit
 ```
 Redux-Toolkit: ^1.8.3
 ```
 
-## ⚛️ Versión de React-Navigation
+## ⚛️ React-Navigation
 ```
 React-Navigation: 6.0.0
 ```
 
-## ⚛️ Versión de React-Native-Bouncy-Checkbox
+## ⚛️ React-Native-Bouncy-Checkbox
 ```
 React-Native-Bouncy-Checkbox: ^3.0.2
 ```
-## ⚛️ Versión de React-Native-Datepicker
+## ⚛️ React-Native-Datepicker
 ```
 React-Native-Datepicker: ^4.2.5
 ```
-## 🔮 Futuro del Proyecto
 
-Se espera seguir agregando proyectos y funcionalidades.
+## ✉️ Contact
 
-## ✉️ Contacto
-
-Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail a cerrano.francisco22@gmail.com
+gmail: cerrano.francisco22@gmail.com
 
 ## 🤔 Autor
 
@@ -55,11 +55,3 @@ Cualquier sugerencia de arquitectura de código,pregunta o problema enviar mail 
 - Twitter: [@thedraxxworld](https://twitter.com/ThedraxxWorld)
 - Github: [thedraxx](https://github.com/thedraxx)
 - LinkedIn: [Francisco Isaac Cerrano](https://www.linkedin.com/in/cerranofrancisco/)
-
-## 🤝 Contribuciones y Agradecimientos
-
-Agradezco a la comunidad de discord, y a Fernando Herrera  por darme sugerencias y ayuda.
-
-## 📝 Licencia
-
-Copyright © 2022 [Francisco](https://github.com/thedraxx).<br />

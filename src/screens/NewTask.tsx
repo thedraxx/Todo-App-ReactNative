@@ -1,23 +1,28 @@
+import {inputs} from '../interfaces/generalInterfaces.d';
 import {addTodo} from '../store/slice/TodoSlice';
-import {Button, Text, TextInput, TouchableHighlight, View} from 'react-native';
+import {TextInput, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import DatePicker from 'react-native-date-picker';
 import React, {useEffect, useState} from 'react';
-import styled from 'styled-components/native';
-
-interface inputs {
-  _id: number;
-  title: string;
-  deadline: string;
-  startTime: string;
-  endTime: string;
-  Remind: string;
-}
+import {
+  ButtonDeadline,
+  ButtonTime,
+  CustomView,
+  GeneralView,
+  MyButon,
+  TextButon,
+  TextDeadLine,
+  TextTime,
+  TextTimeInput,
+  TextTitles,
+  ViewTime,
+} from '../styles/styles';
 
 export const NewTask = ({navigation}: any) => {
-  // Dispatch de redux
+  // Dispatch redux
   const dispatch = useDispatch();
 
+  // The form of the inputs to complete
   const [onChange, setOnChange] = useState<inputs>({
     _id: new Date().getTime(),
     title: '',
@@ -27,7 +32,14 @@ export const NewTask = ({navigation}: any) => {
     Remind: '',
   });
 
-  let hours = new Date().getTime();
+  // This manage the state of the input
+  const handleChange = (name: string, value: string) => {
+    setOnChange({...onChange, [name]: value});
+  };
+
+  // Deadline Picker
+  const [dateDeadline, setDeadline] = useState(new Date());
+  const [openDateDeadline, setOpenDateDeadline] = useState(false);
 
   // DatePicker Init
   const [dateInit, setDateInit] = useState(new Date());
@@ -37,25 +49,18 @@ export const NewTask = ({navigation}: any) => {
   const [dateFinish, setDateFinish] = useState(new Date());
   const [openFinish, setOpenFinish] = useState(false);
 
-  const handleChange = (name: string, value: string) => {
-    setOnChange({...onChange, [name]: value});
-  };
-
+  //  When the user press the button to add a new task
   const handleSubmit = () => {
     dispatch(addTodo(onChange));
     navigation.navigate('To-Do App');
   };
 
-  // Esto escucha por los cambios en el datePicker
+  // UseEffect Listen the changes of the DatePickers
   useEffect(() => {
     handleChange('startTime', dateInit.toLocaleString());
-  }, [dateInit]);
-
-  useEffect(() => {
     handleChange('endTime', dateFinish.toLocaleString());
-  }, [dateFinish]);
-
-  console.log(onChange);
+    handleChange('deadline', dateDeadline.toLocaleString());
+  }, [dateInit, dateFinish, dateDeadline]);
 
   return (
     <GeneralView style={{backgroundColor: 'white'}}>
@@ -73,20 +78,30 @@ export const NewTask = ({navigation}: any) => {
           borderRadius: 10,
         }}
       />
-      <TextTitles>Deadline</TextTitles>
-      <TextInput
-        placeholder="2021-02-28"
-        onChangeText={text => handleChange('deadline', text)}
-        style={{
-          borderColor: 'white',
-          backgroundColor: '#ededed',
-          color: 'black',
-          borderWidth: 1,
-          padding: 15,
-          margin: 20,
-          borderRadius: 10,
-        }}
-      />
+
+      <TextDeadLine>Deadline</TextDeadLine>
+
+      <ViewTime>
+        <ButtonDeadline onPress={() => setOpenDateDeadline(true)}>
+          <View>
+            <TextTimeInput>{` ${dateDeadline.getMonth()} - ${dateDeadline.getDate()} - ${dateDeadline.getFullYear()}`}</TextTimeInput>
+          </View>
+        </ButtonDeadline>
+        <DatePicker
+          mode="date"
+          locale="en-US"
+          modal
+          open={openDateDeadline}
+          date={dateDeadline}
+          onConfirm={date => {
+            setOpenDateDeadline(false);
+            setDeadline(date);
+          }}
+          onCancel={() => {
+            setOpenDateDeadline(false);
+          }}
+        />
+      </ViewTime>
       <CustomView>
         <TextTime>Start time</TextTime>
         <TextTime>End time</TextTime>
@@ -107,7 +122,6 @@ export const NewTask = ({navigation}: any) => {
           onConfirm={date => {
             setOpenInit(false);
             setDateInit(date);
-            console.log('fecha inicio', date);
           }}
           onCancel={() => {
             setOpenFinish(false);
@@ -128,7 +142,6 @@ export const NewTask = ({navigation}: any) => {
           onConfirm={date => {
             setOpenFinish(false);
             setDateFinish(date);
-            console.log('fecha fin', date);
           }}
           onCancel={() => {
             setOpenFinish(false);
@@ -138,7 +151,7 @@ export const NewTask = ({navigation}: any) => {
 
       <TextTitles>Remind</TextTitles>
       <TextInput
-        placeholder="Remind"
+        placeholder="10 minutes early"
         onChangeText={text => handleChange('Remind', text)}
         style={{
           borderColor: 'white',
@@ -152,7 +165,7 @@ export const NewTask = ({navigation}: any) => {
       />
       <TextTitles>Repeat</TextTitles>
       <TextInput
-        placeholder="Remind"
+        placeholder="Weekly"
         onChangeText={text => handleChange('Remind', text)}
         style={{
           borderColor: 'white',
@@ -172,73 +185,3 @@ export const NewTask = ({navigation}: any) => {
     </GeneralView>
   );
 };
-
-// GeneralView
-const GeneralView = styled.View`
-  flex: 1;
-  background-color: #ededed;
-  width: 100%;
-`;
-
-const TextTitles = styled.Text`
-  color: #000000;
-  font-size: 15px;
-  left: 25px;
-  top: 15px;
-  font-weight: bold;
-`;
-
-const TextButon = styled.Text`
-  color: #ffffff;
-  font-size: 15px;
-`;
-
-const MyButon = styled.TouchableHighlight`
-  align-items: center;
-  background-color: #66c689;
-  border-radius: 15px;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  padding: 3%;
-  width: 80%;
-`;
-
-const ButtonTime = styled.TouchableHighlight`
-  align-items: center;
-  background-color: #ededed;
-  border-radius: 15px;
-  padding: 15px;
-  display: flex;
-  width: 30%;
-`;
-
-const ViewTime = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: relative;
-`;
-
-const CustomView = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: relative;
-  margin-bottom: 5px;
-`;
-
-const TextTime = styled.Text`
-  color: #000000;
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TextTimeInput = styled.Text`
-  color: #7c7c7c;
-  font-size: 15px;
-`;

@@ -1,14 +1,18 @@
 import {useSelector, useDispatch} from 'react-redux';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import React, {useEffect, useReducer, useState} from 'react';
-import styled from 'styled-components/native';
+import React, {useEffect, useState} from 'react';
 import {addTodoCompleted} from '../store/slice/TodoSlice';
+import {
+  MyTextTask,
+  MyTextTaskPending,
+  ViewPending,
+  ViewPendingTasks,
+} from '../styles/styles';
 
 export const Pending = () => {
   const {todos} = useSelector((state: any) => state.todo);
 
   const [Tasks, setTasks] = useState([]);
-  const [isSelected, setIsSelected] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -23,7 +27,7 @@ export const Pending = () => {
   return (
     <ViewPending>
       {Tasks.length === 0 ? (
-        <MyTextTask>No todos</MyTextTask>
+        <MyTextTaskPending>All Clear!</MyTextTaskPending>
       ) : (
         Tasks.map((task: any) => {
           return (
@@ -42,29 +46,3 @@ export const Pending = () => {
     </ViewPending>
   );
 };
-
-export const MyText = styled.Text`
-  font-size: 15px;
-  color: black;
-`;
-
-export const MyTextTask = styled.Text`
-  font-size: 15px;
-  color: black;
-`;
-
-export const ViewPending = styled.View`
-  position: relative;
-  left: 15px;
-  top: 0px;
-  padding-top: 2px;
-  padding-bottom: 20px;
-`;
-
-export const ViewPendingTasks = styled.View`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  top: 15px;
-`;

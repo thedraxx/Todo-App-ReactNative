@@ -1,9 +1,13 @@
+import {
+  MyTextTask,
+  MyTextTaskCompleted,
+  ViewCompleted,
+  ViewCompletedTasks,
+} from '../styles/styles';
 import {removeCompletedTodo} from '../store/slice/TodoSlice';
-import {Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import React from 'react';
-import styled from 'styled-components/native';
 
 export const Completed = () => {
   const {todosCompleted} = useSelector((state: any) => state.todo);
@@ -16,12 +20,13 @@ export const Completed = () => {
   return (
     <ViewCompleted>
       {todosCompleted.length === 0 ? (
-        <MyTextTask>No hay nada</MyTextTask>
+        <MyTextTaskCompleted>No tasks Completed</MyTextTaskCompleted>
       ) : (
         todosCompleted.map((task: any) => {
           return (
             <ViewCompletedTasks key={task._id}>
               <BouncyCheckbox
+                isChecked={true}
                 style={{padding: 10}}
                 onPress={() => {
                   HandleSelected(task._id);
@@ -35,28 +40,3 @@ export const Completed = () => {
     </ViewCompleted>
   );
 };
-
-export const MyText = styled.Text`
-  font-size: 15px;
-  color: black;
-`;
-
-export const ViewCompleted = styled.View`
-  position: relative;
-  left: 15px;
-  top: 0px;
-  padding-top: 2px;
-  padding-bottom: 20px;
-`;
-
-export const MyTextTask = styled.Text`
-  font-size: 15px;
-  color: black;
-`;
-export const ViewCompletedTasks = styled.View`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  top: 15px;
-`;
