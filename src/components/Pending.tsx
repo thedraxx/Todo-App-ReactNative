@@ -29,6 +29,7 @@ export const Pending = () => {
           return (
             <ViewPendingTasks key={task._id}>
               <BouncyCheckbox
+                unfillColor="#FFFFFF"
                 onPress={() => {
                   HandleSelected(task._id);
                 }}
@@ -55,8 +56,9 @@ export const MyTextTask = styled.Text`
 export const ViewPending = styled.View`
   position: relative;
   left: 15px;
-  top: 5px;
-  padding: 25px;
+  top: 0px;
+  padding-top: 2px;
+  padding-bottom: 20px;
 `;
 
 export const ViewPendingTasks = styled.View`

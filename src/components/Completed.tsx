@@ -16,11 +16,11 @@ export const Completed = () => {
   return (
     <ViewCompleted>
       {todosCompleted.length === 0 ? (
-        <Text>No hay nada</Text>
+        <MyTextTask>No hay nada</MyTextTask>
       ) : (
         todosCompleted.map((task: any) => {
           return (
-            <ViewPendingTasks key={task._id}>
+            <ViewCompletedTasks key={task._id}>
               <BouncyCheckbox
                 style={{padding: 10}}
                 onPress={() => {
@@ -28,7 +28,7 @@ export const Completed = () => {
                 }}
               />
               <MyTextTask>{task.title}</MyTextTask>
-            </ViewPendingTasks>
+            </ViewCompletedTasks>
           );
         })
       )}
@@ -53,7 +53,7 @@ export const MyTextTask = styled.Text`
   font-size: 15px;
   color: black;
 `;
-export const ViewPendingTasks = styled.View`
+export const ViewCompletedTasks = styled.View`
   position: relative;
   display: flex;
   flex-direction: row;

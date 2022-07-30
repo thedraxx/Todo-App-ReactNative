@@ -28,7 +28,6 @@ export const NewTask = ({navigation}: any) => {
   });
 
   let hours = new Date().getTime();
-  console.log('hours', hours);
 
   // DatePicker Init
   const [dateInit, setDateInit] = useState(new Date());
@@ -44,6 +43,7 @@ export const NewTask = ({navigation}: any) => {
 
   const handleSubmit = () => {
     dispatch(addTodo(onChange));
+    navigation.navigate('To-Do App');
   };
 
   // Esto escucha por los cambios en el datePicker
