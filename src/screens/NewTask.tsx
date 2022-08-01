@@ -1,9 +1,9 @@
-import { TextInput, View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import DatePicker from 'react-native-date-picker';
-import React, { useEffect, useState } from 'react';
-import { addTodo } from '../store/slice/TodoSlice';
-import { inputs } from '../interfaces/generalInterfaces.d';
+import { TextInput, View } from 'react-native'
+import { useDispatch } from 'react-redux'
+import DatePicker from 'react-native-date-picker'
+import React, { useEffect, useState } from 'react'
+import { addTodo } from '../store/slice/TodoSlice'
+import { inputs } from '../interfaces/generalInterfaces.d'
 import {
   ButtonDeadline,
   ButtonTime,
@@ -12,15 +12,20 @@ import {
   MyButon,
   TextButon,
   TextDeadLine,
+  TextDreopdown,
   TextTime,
   TextTimeInput,
   TextTitles,
+  ViewPicker,
   ViewTime,
-} from '../styles/styles';
+  ViewPickerRemind,
+  ViewPickerRepeat
+} from '../styles/styles'
+import DropDownPicker from 'react-native-dropdown-picker'
 
-export function NewTask({ navigation }: any) {
+export function NewTask ({ navigation }: any) {
   // Dispatch redux
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   // The form of the inputs to complete
   const [onChange, setOnChange] = useState<inputs>({
@@ -30,37 +35,74 @@ export function NewTask({ navigation }: any) {
     startTime: '',
     endTime: '',
     Remind: '',
-  });
+    repeat: ''
+  })
 
   // This manage the state of the input
   const handleChange = (name: string, value: string) => {
-    setOnChange({ ...onChange, [name]: value });
-  };
+    setOnChange({ ...onChange, [name]: value })
+  }
 
   // Deadline Picker
-  const [dateDeadline, setDeadline] = useState(new Date());
-  const [openDateDeadline, setOpenDateDeadline] = useState(false);
+  const [dateDeadline, setDeadline] = useState(new Date())
+  const [openDateDeadline, setOpenDateDeadline] = useState(false)
 
   // DatePicker Init
-  const [dateInit, setDateInit] = useState(new Date());
-  const [openInit, setOpenInit] = useState(false);
+  const [dateInit, setDateInit] = useState(new Date())
+  const [openInit, setOpenInit] = useState(false)
 
   // DatePicker Fin
-  const [dateFinish, setDateFinish] = useState(new Date());
-  const [openFinish, setOpenFinish] = useState(false);
+  const [dateFinish, setDateFinish] = useState(new Date())
+  const [openFinish, setOpenFinish] = useState(false)
+
+  // Dropdown Picker Remind
+  const [openRemind, setOpenRemind] = useState(false)
+  const [valueRemind, setValueRemind] = useState('')
+  const [itemsRemind, setItemsRemind] = useState([
+    { label: '10 minutes early', value: '10 minutes early' },
+    { label: '30 minutes early', value: '30 minutes early' }
+  ])
+
+  // Dropdown Picker Repeat
+  const [openRepeat, setOpenRepeat] = useState(false)
+  const [valueRepeat, setValueRepeat] = useState('')
+  const [itemsRepeat, setItemsRepeat] = useState([
+    { label: 'daily', value: 'daily' },
+    { label: 'weekly', value: 'weekly' },
+    { label: 'monthly', value: 'monthly' }
+  ])
 
   //  When the user press the button to add a new task
   const handleSubmit = () => {
-    dispatch(addTodo(onChange));
-    navigation.navigate('To-Do App');
-  };
+    console.log(onChange)
+    dispatch(addTodo(onChange))
+    navigation.navigate('To-Do App')
+  }
 
-  // UseEffect Listen the changes of the DatePickers
+  // UseEffect Listen the changes of the deadline
   useEffect(() => {
-    handleChange('startTime', dateInit.toLocaleString());
-    handleChange('endTime', dateFinish.toLocaleString());
-    handleChange('deadline', dateDeadline.toLocaleString());
-  }, [dateInit, dateFinish, dateDeadline]);
+    handleChange('deadline', dateDeadline.toLocaleString())
+  }, [openDateDeadline])
+
+  // UseEffect Listen the changes of the start time
+  useEffect(() => {
+    handleChange('startTime', dateFinish.toLocaleString())
+  }, [openInit])
+
+  // UseEffect Listen the changes of the end time
+  useEffect(() => {
+    handleChange('endTime', dateInit.toLocaleString())
+  }, [openFinish])
+
+  // UseEffect Listen the changes of the Dropdown Picker remind
+  useEffect(() => {
+    handleChange('Remind', valueRemind)
+  }, [openRemind])
+
+  // UseEffect Listen the changes of the Dropdown Picker repeat
+  useEffect(() => {
+    handleChange('repeat', valueRepeat)
+  }, [openRepeat])
 
   return (
     <GeneralView style={{ backgroundColor: 'white' }}>
@@ -75,12 +117,11 @@ export function NewTask({ navigation }: any) {
           borderWidth: 1,
           padding: 15,
           margin: 20,
-          borderRadius: 10,
+          borderRadius: 10
         }}
       />
 
       <TextDeadLine>Deadline</TextDeadLine>
-
       <ViewTime>
         <ButtonDeadline onPress={() => setOpenDateDeadline(true)}>
           <View>
@@ -94,11 +135,11 @@ export function NewTask({ navigation }: any) {
           open={openDateDeadline}
           date={dateDeadline}
           onConfirm={(date) => {
-            setOpenDateDeadline(false);
-            setDeadline(date);
+            setOpenDateDeadline(false)
+            setDeadline(date)
           }}
           onCancel={() => {
-            setOpenDateDeadline(false);
+            setOpenDateDeadline(false)
           }}
         />
       </ViewTime>
@@ -120,11 +161,11 @@ export function NewTask({ navigation }: any) {
           open={openInit}
           date={dateInit}
           onConfirm={(date) => {
-            setOpenInit(false);
-            setDateInit(date);
+            setOpenInit(false)
+            setDateInit(date)
           }}
           onCancel={() => {
-            setOpenFinish(false);
+            setOpenFinish(false)
           }}
         />
 
@@ -140,48 +181,47 @@ export function NewTask({ navigation }: any) {
           open={openFinish}
           date={dateFinish}
           onConfirm={(date) => {
-            setOpenFinish(false);
-            setDateFinish(date);
+            setOpenFinish(false)
+            setDateFinish(date)
           }}
           onCancel={() => {
-            setOpenFinish(false);
+            setOpenFinish(false)
           }}
         />
       </ViewTime>
+      {/* Dropdown */}
+      <ViewPicker>
+        <ViewPickerRemind>
 
-      <TextTitles>Remind</TextTitles>
-      <TextInput
-        placeholder="10 minutes early"
-        onChangeText={(text) => handleChange('Remind', text)}
-        style={{
-          borderColor: 'white',
-          backgroundColor: '#ededed',
-          color: 'black',
-          borderWidth: 1,
-          padding: 15,
-          margin: 20,
-          borderRadius: 10,
-        }}
+        <TextDreopdown>Remind</TextDreopdown>
+        <DropDownPicker
+        open={openRemind}
+        value={valueRemind}
+        items={itemsRemind}
+        setOpen={setOpenRemind}
+        setValue={setValueRemind}
+        setItems={setItemsRemind}
       />
-      <TextTitles>Repeat</TextTitles>
-      <TextInput
-        placeholder="Weekly"
-        onChangeText={(text) => handleChange('Remind', text)}
-        style={{
-          borderColor: 'white',
-          backgroundColor: '#ededed',
-          color: 'black',
-          borderWidth: 1,
-          padding: 15,
-          margin: 20,
-          borderRadius: 10,
-        }}
+        </ViewPickerRemind>
+        <ViewPickerRepeat>
+
+      <TextDreopdown>Repeat</TextDreopdown>
+        <DropDownPicker
+        open={openRepeat}
+        value={valueRepeat}
+        items={itemsRepeat}
+        setOpen={setOpenRepeat}
+        setValue={setValueRepeat}
+        setItems={setItemsRepeat}
       />
+              </ViewPickerRepeat>
+      </ViewPicker>
+
       <MyButon onPress={handleSubmit}>
         <View>
           <TextButon>Create a Task</TextButon>
         </View>
       </MyButon>
     </GeneralView>
-  );
+  )
 }

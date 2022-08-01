@@ -39,6 +39,11 @@ React-Native-Bouncy-Checkbox: ^3.0.2
 React-Native-Datepicker: ^4.2.5
 ```
 
+## ⚛️ React-Native-Dropdown-Picker
+```
+ React-Native-Dropdown-Picker: ^5.4.2
+```
+
 ![Screenshot_2](https://user-images.githubusercontent.com/55867157/182003744-7141dcfa-25c8-4152-835b-88aeb9e102f8.png)
 ![Screenshot_3](https://user-images.githubusercontent.com/55867157/182003746-31f1190d-2cdc-482a-83ad-7d793ceaf513.png)
 ![Screenshot_4](https://user-images.githubusercontent.com/55867157/182003749-cc7fedfa-4e3b-4c07-95f8-97cc152b1f7f.png)

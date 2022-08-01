@@ -1,18 +1,18 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Completed } from '../components/Completed';
-import { Pending } from '../components/Pending';
+import React from 'react'
+import { View } from 'react-native'
+import { Completed } from '../components/Completed'
+import { Pending } from '../components/Pending'
 import {
   MyButon,
   MyTextCompleted,
   MyTextPending,
-  TextButon,
-} from '../styles/styles';
+  TextButon
+} from '../styles/styles'
 
-export function HomeScreen({ navigation }: any) {
+export function HomeScreen ({ navigation }: any) {
   return (
     <View style={{
-      top: 0, backgroundColor: 'white', padding: 0, flex: 1,
+      top: 0, backgroundColor: 'white', padding: 0, flex: 1
     }}
     >
       <MyTextCompleted>Completed Tasks</MyTextCompleted>
@@ -28,5 +28,5 @@ export function HomeScreen({ navigation }: any) {
         </View>
       </MyButon>
     </View>
-  );
+  )
 }

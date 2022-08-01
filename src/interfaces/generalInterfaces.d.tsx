@@ -5,4 +5,5 @@ export interface inputs {
   startTime: string;
   endTime: string;
   Remind: string;
+  repeat: string;
 }
