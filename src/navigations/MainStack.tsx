@@ -1,13 +1,14 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen} from '../screens/HomeScreen';
-import {NewTask} from '../screens/NewTask';
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { HomeScreen } from '../screens/HomeScreen'
+import { NewTask } from '../screens/NewTask'
 
 export const MainStack = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator()
   return (
     <>
+    {/* Using navigation for navigate between screens */}
       <NavigationContainer>
         <Stack.Navigator initialRouteName="To-Do App">
           {/* Screen Home */}
@@ -17,5 +18,5 @@ export const MainStack = () => {
         </Stack.Navigator>
       </NavigationContainer>
     </>
-  );
-};
+  )
+}

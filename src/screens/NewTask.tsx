@@ -1,9 +1,8 @@
 import { TextInput, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import DatePicker from 'react-native-date-picker'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { addTodo } from '../store/slice/TodoSlice'
-import { inputs } from '../interfaces/generalInterfaces.d'
 import {
   ButtonDeadline,
   ButtonTime,
@@ -22,59 +21,46 @@ import {
   ViewPickerRepeat
 } from '../styles/styles'
 import DropDownPicker from 'react-native-dropdown-picker'
+import { hooksPickers } from '../hooks/hooksPickers'
+import { hookOnChange } from '../hooks/hookOnChange'
 
 export function NewTask ({ navigation }: any) {
+  // Pickers from Time and Dropdown
+  const {
+    dateDeadline,
+    setDeadline,
+    openDateDeadline,
+    setOpenDateDeadline,
+    dateInit,
+    setDateInit,
+    openInit,
+    setOpenInit,
+    dateFinish,
+    setDateFinish,
+    openFinish,
+    setOpenFinish,
+    openRemind,
+    setOpenRemind,
+    valueRemind,
+    setValueRemind,
+    itemsRemind,
+    setItemsRemind,
+    openRepeat,
+    setOpenRepeat,
+    valueRepeat,
+    setValueRepeat,
+    itemsRepeat,
+    setItemsRepeat
+  } = hooksPickers()
+
+  // This manage the state of the input
+  const { handleChange, onChange } = hookOnChange()
+
   // Dispatch redux
   const dispatch = useDispatch()
 
-  // The form of the inputs to complete
-  const [onChange, setOnChange] = useState<inputs>({
-    _id: new Date().getTime(),
-    title: '',
-    deadline: '',
-    startTime: '',
-    endTime: '',
-    Remind: '',
-    repeat: ''
-  })
-
-  // This manage the state of the input
-  const handleChange = (name: string, value: string) => {
-    setOnChange({ ...onChange, [name]: value })
-  }
-
-  // Deadline Picker
-  const [dateDeadline, setDeadline] = useState(new Date())
-  const [openDateDeadline, setOpenDateDeadline] = useState(false)
-
-  // DatePicker Init
-  const [dateInit, setDateInit] = useState(new Date())
-  const [openInit, setOpenInit] = useState(false)
-
-  // DatePicker Fin
-  const [dateFinish, setDateFinish] = useState(new Date())
-  const [openFinish, setOpenFinish] = useState(false)
-
-  // Dropdown Picker Remind
-  const [openRemind, setOpenRemind] = useState(false)
-  const [valueRemind, setValueRemind] = useState('')
-  const [itemsRemind, setItemsRemind] = useState([
-    { label: '10 minutes early', value: '10 minutes early' },
-    { label: '30 minutes early', value: '30 minutes early' }
-  ])
-
-  // Dropdown Picker Repeat
-  const [openRepeat, setOpenRepeat] = useState(false)
-  const [valueRepeat, setValueRepeat] = useState('')
-  const [itemsRepeat, setItemsRepeat] = useState([
-    { label: 'daily', value: 'daily' },
-    { label: 'weekly', value: 'weekly' },
-    { label: 'monthly', value: 'monthly' }
-  ])
-
   //  When the user press the button to add a new task
   const handleSubmit = () => {
-    console.log(onChange)
     dispatch(addTodo(onChange))
     navigation.navigate('To-Do App')
   }

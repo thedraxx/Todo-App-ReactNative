@@ -1,4 +1,3 @@
-
 import styled from 'styled-components/native'
 
 // NewTask Styles
@@ -6,6 +5,19 @@ export const GeneralView = styled.View`
   flex: 1;
   background-color: #ededed;
   width: 100%;
+`
+
+export const MyButon = styled.TouchableHighlight`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background-color: #50e587;
+  width: 50%;
+  padding: 5% 0;
+  border-radius: 10px;
+  flex-direction: column;
+
 `
 
 export const TextTitles = styled.Text`
@@ -106,6 +118,13 @@ export const TextDeadLine = styled.Text`
 `
 
 // HomeScreen Styles
+export const ViewHome = styled.View`
+  top: 0;
+  background-Color:'white'; 
+  padding: 0; 
+  flex: 1
+`
+
 export const MyTextCompleted = styled.Text`
   font-size: 20px;
   color: black;
@@ -124,16 +143,17 @@ export const MyTextPending = styled.Text`
   position: relative;
 `
 
-export const MyButon = styled.TouchableHighlight`
+export const MyButonHome = styled.TouchableHighlight`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
   background-color: #50e587;
-  position: relative;
   width: 50%;
   padding: 5% 0;
   border-radius: 10px;
+  flex-direction: column;
+  top: 250px;
 `
 
 // Completed
