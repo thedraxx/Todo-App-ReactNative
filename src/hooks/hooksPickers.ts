@@ -30,6 +30,7 @@ export const hooksPickers = () => {
     { label: 'monthly', value: 'monthly' }
   ])
 
+  // Return elements to NewTask.tsx
   return {
     dateDeadline,
     setDeadline,

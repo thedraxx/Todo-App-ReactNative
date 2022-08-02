@@ -18,6 +18,7 @@ export const hookOnChange = () => {
     setOnChange({ ...onChange, [name]: value })
   }
 
+  // Return the elements to NewTask.tsx
   return {
     handleChange,
     onChange

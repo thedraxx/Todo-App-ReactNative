@@ -2,6 +2,9 @@ import { TextInput, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import DatePicker from 'react-native-date-picker'
 import React, { useEffect } from 'react'
+import DropDownPicker from 'react-native-dropdown-picker'
+import { hooksPickers } from '../hooks/hooksPickers'
+import { hookOnChange } from '../hooks/hookOnChange'
 import { addTodo } from '../store/slice/TodoSlice'
 import {
   ButtonDeadline,
@@ -20,11 +23,11 @@ import {
   ViewPickerRemind,
   ViewPickerRepeat
 } from '../styles/styles'
-import DropDownPicker from 'react-native-dropdown-picker'
-import { hooksPickers } from '../hooks/hooksPickers'
-import { hookOnChange } from '../hooks/hookOnChange'
 
 export function NewTask ({ navigation }: any) {
+  // Dispatch redux
+  const dispatch = useDispatch()
+
   // Pickers from Time and Dropdown
   const {
     dateDeadline,
@@ -55,9 +58,6 @@ export function NewTask ({ navigation }: any) {
 
   // This manage the state of the input
   const { handleChange, onChange } = hookOnChange()
-
-  // Dispatch redux
-  const dispatch = useDispatch()
 
   //  When the user press the button to add a new task
   const handleSubmit = () => {
