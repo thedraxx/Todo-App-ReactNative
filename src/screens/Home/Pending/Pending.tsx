@@ -1,13 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux'
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import React, { useEffect, useState } from 'react'
-import { addTodoCompleted } from '../store/slice/TodoSlice'
-import {
-  MyTextTask,
-  MyTextTaskPending,
-  ViewCompletedTasks,
-  ViewPending
-} from '../styles/styles'
+import { addTodoCompleted } from '../../../store/slice/TodoSlice'
+import { FlatList } from 'react-native'
+import { MyTextTask, MyTextTaskPending, ViewCompletedTasks, ViewPending } from './styles'
+// import { MyButton } from '../../../components/buttons/MyButton'
 
 export const Pending = () => {
   const { todos } = useSelector((state: any) => state.todo)
@@ -25,27 +22,31 @@ export const Pending = () => {
   }, [todos])
 
   return (
-    <ViewPending>
+    <FlatList
+      data={Tasks}
+      keyExtractor={(item) => item._id}
+      // ListFooterComponent = { <MyButton /> }
+      renderItem={({ item }) => (
+        <ViewPending>
       {Tasks.length === 0
         ? (
         <MyTextTaskPending>All Clear!</MyTextTaskPending>
           )
         : (
-            Tasks.map((task: any) => {
-              return (
-            <ViewCompletedTasks key={task._id}>
+            <ViewCompletedTasks key={item._id}>
               <BouncyCheckbox
                 isChecked={false}
                 style={{ padding: 10 }}
                 onPress={() => {
-                  HandleSelected(task._id)
+                  HandleSelected(item._id)
                 }}
               />
-              <MyTextTask>{task.title}</MyTextTask>
+              <MyTextTask>{item.title}</MyTextTask>
+
             </ViewCompletedTasks>
-              )
-            })
           )}
     </ViewPending>
+      )}
+    />
   )
 }

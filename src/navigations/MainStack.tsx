@@ -1,12 +1,11 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { HomeScreen } from '../screens/HomeScreen'
-import { NewTask } from '../screens/NewTask'
+import HomeScreen from '../screens/Home/HomeScreen'
+import NewTask from '../screens/AddTask/NewTask'
 
-export const MainStack = () => {
-  const Stack = createNativeStackNavigator()
-  return (
+const Stack = createNativeStackNavigator()
+const MainStack = () => (
     <>
     {/* Using navigation for navigate between screens */}
       <NavigationContainer>
@@ -18,5 +17,6 @@ export const MainStack = () => {
         </Stack.Navigator>
       </NavigationContainer>
     </>
-  )
-}
+)
+
+export default MainStack

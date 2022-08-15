@@ -13,6 +13,7 @@ export const todoSlice = createSlice({
     // added todo to todos
     addTodo: (state: {todos: string[]}, { payload }: any) => {
       state.todos.push(payload)
+      console.log('desde addtodo', state.todos)
     },
     // add todo to todoCompleted
     addTodoCompleted: (

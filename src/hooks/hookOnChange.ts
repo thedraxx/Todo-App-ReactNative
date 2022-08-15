@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { inputs } from '../interfaces/generalInterfaces.d'
+import { inputs } from '../interfaces/generalInterfaces'
 
 export const hookOnChange = () => {
   // The form of the inputs to complete

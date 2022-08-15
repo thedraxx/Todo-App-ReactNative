@@ -1,30 +1,14 @@
-import { TextInput, View } from 'react-native'
+import { Alert, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import DatePicker from 'react-native-date-picker'
 import React, { useEffect } from 'react'
 import DropDownPicker from 'react-native-dropdown-picker'
-import { hooksPickers } from '../hooks/hooksPickers'
-import { hookOnChange } from '../hooks/hookOnChange'
-import { addTodo } from '../store/slice/TodoSlice'
-import {
-  ButtonDeadline,
-  ButtonTime,
-  CustomView,
-  GeneralView,
-  MyButon,
-  TextButon,
-  TextDeadLine,
-  TextDreopdown,
-  TextTime,
-  TextTimeInput,
-  TextTitles,
-  ViewPicker,
-  ViewTime,
-  ViewPickerRemind,
-  ViewPickerRepeat
-} from '../styles/styles'
+import { hooksPickers } from '../../hooks/hooksPickers'
+import { hookOnChange } from '../../hooks/hookOnChange'
+import { addTodo } from '../../store/slice/TodoSlice'
+import { ButtonDeadline, ButtonTime, CustomView, MyButton, TextButon, TextDeadLine, TextDreopdown, TextInputCustom, TextTime, TextTimeInput, TextTitles, ViewNewTask, ViewPicker, ViewPickerRemind, ViewPickerRepeat, ViewTime } from './styles'
 
-export function NewTask ({ navigation }: any) {
+const NewTask = ({ navigation }: any) => {
   // Dispatch redux
   const dispatch = useDispatch()
 
@@ -61,8 +45,12 @@ export function NewTask ({ navigation }: any) {
 
   //  When the user press the button to add a new task
   const handleSubmit = () => {
-    dispatch(addTodo(onChange))
-    navigation.navigate('To-Do App')
+    if (onChange.title === '' || onChange.deadline === '' || onChange.startTime === '' || onChange.endTime === '' || onChange.Remind === '' || onChange.repeat === '') {
+      return Alert.alert('Please fill all the fields')
+    } else {
+      dispatch(addTodo(onChange))
+      navigation.navigate('To-Do App')
+    }
   }
 
   // UseEffect Listen the changes of the deadline
@@ -91,20 +79,11 @@ export function NewTask ({ navigation }: any) {
   }, [openRepeat])
 
   return (
-    <GeneralView style={{ backgroundColor: 'white' }}>
+    <ViewNewTask>
       <TextTitles>Title</TextTitles>
-      <TextInput
+      <TextInputCustom
         placeholder="Design team meeting"
-        onChangeText={(text) => handleChange('title', text)}
-        style={{
-          borderColor: 'white',
-          backgroundColor: '#ededed',
-          color: 'black',
-          borderWidth: 1,
-          padding: 15,
-          margin: 20,
-          borderRadius: 10
-        }}
+        onChangeText={(text: string) => handleChange('title', text)}
       />
 
       <TextDeadLine>Deadline</TextDeadLine>
@@ -179,35 +158,36 @@ export function NewTask ({ navigation }: any) {
       <ViewPicker>
         <ViewPickerRemind>
 
-        <TextDreopdown>Remind</TextDreopdown>
-        <DropDownPicker
-        open={openRemind}
-        value={valueRemind}
-        items={itemsRemind}
-        setOpen={setOpenRemind}
-        setValue={setValueRemind}
-        setItems={setItemsRemind}
-      />
+          <TextDreopdown>Remind</TextDreopdown>
+          <DropDownPicker
+            open={openRemind}
+            value={valueRemind}
+            items={itemsRemind}
+            setOpen={setOpenRemind}
+            setValue={setValueRemind}
+            setItems={setItemsRemind}
+          />
         </ViewPickerRemind>
         <ViewPickerRepeat>
 
-      <TextDreopdown>Repeat</TextDreopdown>
-        <DropDownPicker
-        open={openRepeat}
-        value={valueRepeat}
-        items={itemsRepeat}
-        setOpen={setOpenRepeat}
-        setValue={setValueRepeat}
-        setItems={setItemsRepeat}
-      />
-              </ViewPickerRepeat>
+          <TextDreopdown>Repeat</TextDreopdown>
+          <DropDownPicker
+            open={openRepeat}
+            value={valueRepeat}
+            items={itemsRepeat}
+            setOpen={setOpenRepeat}
+            setValue={setValueRepeat}
+            setItems={setItemsRepeat}
+          />
+        </ViewPickerRepeat>
       </ViewPicker>
 
-      <MyButon onPress={handleSubmit}>
+      <MyButton onPress={handleSubmit}>
         <View>
           <TextButon>Create a Task</TextButon>
         </View>
-      </MyButon>
-    </GeneralView>
+      </MyButton>
+    </ViewNewTask>
   )
 }
+export default NewTask

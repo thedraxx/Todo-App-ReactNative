@@ -20,5 +20,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'react/prop-types': ['error', { ignore: ['navigation'] }]
   }
 }
