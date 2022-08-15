@@ -5,14 +5,14 @@ export const ButtonDeadline = styled.TouchableHighlight`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ededed;
+  background-color: ${colors.gray};
   border-radius: 10px;
   padding: 15px;
   width: 90%;
 `
 export const ButtonTime = styled.TouchableHighlight`
   align-items: center;
-  background-color: #ededed;
+  background-color:  ${colors.gray};
   border-radius: 15px;
   padding: 15px;
   display: flex;
@@ -30,7 +30,7 @@ export const CustomView = styled.View`
 
 export const GeneralView = styled.View`
   flex: 1;
-  background-color: #ededed;
+  background-color:  ${colors.gray};
   width: 100%;
 `
 
@@ -39,7 +39,7 @@ export const MyButton = styled.TouchableHighlight`
   align-items: center;
   justify-content: center;
   margin: auto;
-  background-color: #50e587;
+  background-color: ${colors.green};
   width: 50%;
   padding: 5% 0;
   border-radius: 10px;
@@ -52,7 +52,7 @@ export const TextButon = styled.Text`
 `
 
 export const TextDeadLine = styled.Text`
-  color: #000000;
+  color: ${colors.black};
   font-size: 15px;
   left: 25px;
   top: -5px;
@@ -60,7 +60,7 @@ export const TextDeadLine = styled.Text`
 `
 
 export const TextDreopdown = styled.Text`
-  color: #000000;
+  color: ${colors.black};
   font-size: 15px;
   left: 0px;
   font-weight: bold;
@@ -68,19 +68,19 @@ export const TextDreopdown = styled.Text`
 `
 
 export const TextTime = styled.Text`
-  color: #000000;
+  color: ${colors.black};
   font-size: 15px;
   font-weight: bold;
   margin-top: 5px;
 `
 
 export const TextTimeInput = styled.Text`
-  color: #7c7c7c;
+  color: ${colors.darkGray};
   font-size: 15px;
 `
 
 export const TextTitles = styled.Text`
-  color: #000000;
+  color: ${colors.black};
   font-size: 15px;
   left: 25px;
   top: 15px;
@@ -122,7 +122,7 @@ export const MyButon = styled.TouchableHighlight`
   align-items: center;
   justify-content: center;
   margin: auto;
-  background-color: #50e587;
+  background-color: ${colors.green};
   width: 50%;
   padding: 5% 0;
   border-radius: 10px;
@@ -132,13 +132,14 @@ export const MyButon = styled.TouchableHighlight`
 export const ViewNewTask = styled.View`
   background-color: ${colors.white};
   flex: 1;
+  width: 100%;
 `
 
 export const TextInputCustom = styled.TextInput`
   border-color: ${colors.gray};
   background-color: ${colors.gray};
   color: ${colors.black};
-  border-width: 1;
+  border-width: 1px;
   padding: 15px;
   margin: 20px;
   border-radius: 10px;

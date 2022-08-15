@@ -187,6 +187,7 @@ const NewTask = ({ navigation }: any) => {
           <TextButon>Create a Task</TextButon>
         </View>
       </MyButton>
+
     </ViewNewTask>
   )
 }

@@ -4,10 +4,10 @@ import { MyButonHome, TextButon, ViewButton } from './styles'
 
 const MyButton = ({ navigation }: {navigation: any}) => {
   return (
-    <ViewButton add prop-typesutton>
+    <ViewButton>
       <MyButonHome onPress={() => navigation.navigate('Add task')}>
         <View>
-          <TextButon>Add a task </TextButon>
+          <TextButon> + </TextButon>
         </View>
       </MyButonHome>
     </ViewButton>

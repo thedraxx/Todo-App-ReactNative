@@ -17,9 +17,9 @@ export const Completed = () => {
   return (
     <ListCustom
       data={todosCompleted}
-      keyExtractor={item => item._id}
+      keyExtractor={(item: { _id: number }) => item._id}
       // ListFooterComponent = { <MyButton /> }
-      renderItem={({ item }) => (
+      renderItem={({ item }:any) => (
         <ViewCompleted>
           {
             todosCompleted.length === 0

@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { colors } from '../../utilities/colors'
 
 export const MyTextCompleted = styled.Text`
   font-size: 20px;
@@ -20,7 +21,7 @@ export const MyTextPending = styled.Text`
 
 export const ViewHome = styled.View`
   top: 0;
-  background-Color:'white'; 
+  background-Color:${colors.white}; 
   padding: 0; 
   flex: 1
 `

@@ -3,15 +3,27 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeScreen from '../screens/Home/HomeScreen'
 import NewTask from '../screens/AddTask/NewTask'
+import { colors } from '../utilities/colors'
 
 const Stack = createNativeStackNavigator()
 const MainStack = () => (
     <>
     {/* Using navigation for navigate between screens */}
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="To-Do App">
+        <Stack.Navigator initialRouteName="To-Do App" >
           {/* Screen Home */}
-          <Stack.Screen name="To-Do App" component={HomeScreen} />
+          <Stack.Screen name="To-Do App" component={HomeScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: `${colors.blue}`
+            },
+            title: 'Welcome!',
+            headerTintColor: `${colors.white}`,
+            headerTitleStyle: {
+              fontWeight: 'bold'
+            }
+          }}
+          />
           {/* Screen NewTask */}
           <Stack.Screen name="Add task" component={NewTask} />
         </Stack.Navigator>
