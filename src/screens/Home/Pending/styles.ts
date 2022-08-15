@@ -1,5 +1,6 @@
 
 import styled from 'styled-components/native'
+import { colors } from '../../../utilities/colors'
 
 export const MyTextTaskPending = styled.Text`
 font-size: 15px;
@@ -14,10 +15,12 @@ export const ViewPending = styled.View`
   padding-bottom: 20px;
 `
 export const MyTextTask = styled.Text`
-  font-size: 15px;
-  color: black;
+  font-size: 20px;
+  color: ${colors.black};
+`
 
-
+export const MyTextTaskCompleted = styled(MyTextTask)`
+  color: ${colors.green};
 `
 
 export const ViewCompletedTasks = styled.View`
@@ -26,4 +29,5 @@ export const ViewCompletedTasks = styled.View`
   flex-direction: row;
   align-items: center;
   top: 15px;
+  width:70%
 `

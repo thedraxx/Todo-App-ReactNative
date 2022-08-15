@@ -11,13 +11,14 @@ export const todoSlice = createSlice({
   },
   reducers: {
     // added todo to todos
-    addTodo: (state: {todos: string[]}, { payload }: any) => {
+    addTodo: (state: { todos: string[] }, { payload }: any) => {
       state.todos.push(payload)
       console.log('desde addtodo', state.todos)
     },
+
     // add todo to todoCompleted
     addTodoCompleted: (
-      state: {todosCompleted: string[]; todos: string[]},
+      state: { todosCompleted: string[]; todos: string[] },
       { payload }: any
     ) => {
       state.todos.map((task: any) => {
@@ -29,7 +30,7 @@ export const todoSlice = createSlice({
     },
     // remove todo from todosCompleted and add to todos
     removeCompletedTodo: (
-      state: {todosCompleted: string[]; todos: string[]},
+      state: { todosCompleted: string[]; todos: string[] },
       { payload }: any
     ) => {
       state.todosCompleted.map((task: any) => {
@@ -40,10 +41,23 @@ export const todoSlice = createSlice({
           )
         }
       })
+    },
+
+    // remove todo from todosCompleted and add to todos
+    ChangeCompleted: (
+      state: { todosCompleted: string[]; todos: string[] },
+      { payload }: any
+    ) => {
+      state.todos.map((task: any) => {
+        if (task._id === payload) {
+          task.completed = !task.completed
+        }
+      })
     }
+
   }
 })
 
 // Export the reducers
-export const { addTodo, addTodoCompleted, removeCompletedTodo } =
+export const { addTodo, addTodoCompleted, removeCompletedTodo, ChangeCompleted } =
   todoSlice.actions

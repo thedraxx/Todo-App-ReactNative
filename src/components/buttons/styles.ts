@@ -12,7 +12,7 @@ export const ViewButton = styled.View`
 `
 
 export const MyButonHome = styled.TouchableHighlight`
-  background-color: ${colors.green};
+  background-color: ${colors.gray};
   display: flex;
   flex-direction: row;
   width: 70px;
@@ -27,7 +27,7 @@ export const MyButonHome = styled.TouchableHighlight`
 `
 
 export const TextButon = styled.Text`
-  color: ${colors.white};
+  color: ${colors.lightGray};
   font-size: 30px;
   font-weight: bold;
   text-align: center;

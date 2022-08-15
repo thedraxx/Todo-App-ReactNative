@@ -2,13 +2,17 @@ import React from 'react'
 import { Pending } from './Pending/Pending'
 
 import MyButton from '../../components/buttons/MyButton'
-import { MyTextPending, ViewHome } from './styles'
+import { ContainerPending, HorizonalLine, MyTextPending, ViewHome } from './styles'
+import MyUser from '../../components/user/MyUser'
 
 const HomeScreen = ({ navigation }: any) => (
     <ViewHome>
-      <MyTextPending>Pending Tasks</MyTextPending>
+      <MyUser />
+      <HorizonalLine />
       {/* Component Pending Tasks */}
+      <ContainerPending >
       <Pending />
+      </ContainerPending>
       {/* OnPress Buton, navigate to screen to add a new task */}
       <MyButton navigation = {navigation}/>
     </ViewHome>

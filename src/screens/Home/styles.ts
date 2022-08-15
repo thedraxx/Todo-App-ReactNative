@@ -25,3 +25,16 @@ export const ViewHome = styled.View`
   padding: 0; 
   flex: 1
 `
+export const ContainerPending = styled.View`
+  flex: 1;
+  left:20px
+`
+
+export const HorizonalLine = styled.View`
+  border-bottom-color: ${colors.gray};
+  border-bottom-width: 1px;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  
+`

@@ -15,12 +15,13 @@ const MainStack = () => (
           <Stack.Screen name="To-Do App" component={HomeScreen}
           options={{
             headerStyle: {
-              backgroundColor: `${colors.blue}`
+              backgroundColor: `${colors.white}`
             },
-            title: 'Welcome!',
-            headerTintColor: `${colors.white}`,
+            title: ' 📔 Inbox',
+            headerTintColor: `${colors.black}`,
             headerTitleStyle: {
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              fontSize: 25
             }
           }}
           />

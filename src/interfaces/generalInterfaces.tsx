@@ -6,4 +6,5 @@ export interface inputs {
   endTime: string;
   Remind: string;
   repeat: string;
+  isCompleted: boolean;
 }
