@@ -44,6 +44,11 @@ React-Native-Datepicker: ^4.2.5
  React-Native-Dropdown-Picker: ^5.4.2
 ```
 
+## ⚛️ React-Native-Vector-Icons
+```
+React-Native-Vector-Icons: ^^9.2.0
+```
+
 ## How to use: 
 ```
 
