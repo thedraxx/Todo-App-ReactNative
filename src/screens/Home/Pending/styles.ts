@@ -35,20 +35,6 @@ export const ViewCompletedTasks = styled.View`
   width:90%
 `
 
-export const ContainerButtonRemove = styled.View`
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  display: flex;
-`
-export const ButtonRemove = styled.TouchableOpacity`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-
-`
 export const RemoveText = styled.Text`
   color: ${colors.red};
   font-size: 20px;

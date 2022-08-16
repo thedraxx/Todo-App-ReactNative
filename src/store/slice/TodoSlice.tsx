@@ -5,7 +5,137 @@ export const todoSlice = createSlice({
   name: 'todo',
   initialState: {
     // Todos init state
-    todos: []
+    todos: [{
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    },
+    {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    },
+    {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }, {
+      _id: Math.random(),
+      title: 'test',
+      deadline: 'test',
+      startTime: '10:00',
+      endTime: '11:00',
+      Remind: 'test',
+      repeat: 'test',
+      isCompleted: false
+    }
+
+    ]
   },
   reducers: {
     // added todo to todos
