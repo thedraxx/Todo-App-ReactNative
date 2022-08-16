@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import { MyButonHome, TextButon, ViewButton } from './styles'
 
-const MyButton = ({ navigation }: {navigation: any}) => {
+const ButtonNewTask = ({ navigation }: {navigation: any}) => {
   return (
     <ViewButton>
       <MyButonHome onPress={() => navigation.navigate('Add task')}>
@@ -14,4 +14,4 @@ const MyButton = ({ navigation }: {navigation: any}) => {
   )
 }
 
-export default MyButton
+export default ButtonNewTask

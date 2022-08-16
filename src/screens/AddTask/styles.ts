@@ -19,36 +19,17 @@ export const ButtonTime = styled.TouchableHighlight`
   width: 30%;
 `
 
-export const CustomView = styled.View`
+export const ViewStartEnd = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  position: relative;
-  margin-bottom: 5px;
-  margin-top: 10px;
+  top:50px
 `
 
 export const GeneralView = styled.View`
   flex: 1;
   background-color:  ${colors.gray};
   width: 100%;
-`
-
-export const MyButton = styled.TouchableHighlight`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  background-color: ${colors.green};
-  width: 50%;
-  padding: 5% 0;
-  border-radius: 10px;
-  flex-direction: column;
-`
-
-export const TextButon = styled.Text`
-  color: #ffffff;
-  font-size: 15px;
 `
 
 export const TextDeadLine = styled.Text`
@@ -62,9 +43,8 @@ export const TextDeadLine = styled.Text`
 export const TextDreopdown = styled.Text`
   color: ${colors.black};
   font-size: 15px;
-  left: 0px;
   font-weight: bold;
-  margin: 5px;
+  margin-top:15px;
 `
 
 export const TextTime = styled.Text`
@@ -91,8 +71,6 @@ export const ViewPicker = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 15px;
-  left: -20px;
   width: 100%;
 `
 
@@ -100,21 +78,34 @@ export const ViewTime = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  position: relative;
+  width: 100%;
+  top: 50px;
+  text-align: end;
+`
+
+export const ViewDeadline = styled.View`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `
 
 export const ViewPickerRemind = styled.View`
-  top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 90%;
-  left: 25px;
-  bottom: 15px;
+  margin-top: 70px;
 `
 
 export const ViewPickerRepeat = styled.View`
-  top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 90%;
-  left: 25px;
-  bottom: 15px;
+  margin-top:55px;
 `
 
 export const MyButon = styled.TouchableHighlight`
@@ -133,14 +124,42 @@ export const ViewNewTask = styled.View`
   background-color: ${colors.white};
   flex: 1;
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 `
 
 export const TextInputCustom = styled.TextInput`
   border-color: ${colors.gray};
   background-color: ${colors.gray};
   color: ${colors.black};
-  border-width: 1px;
   padding: 15px;
   margin: 20px;
   border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+`
+
+export const ContainerTittle = styled.View`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  
+`
+export const ContainerDeadline = styled.View` 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  top: 20px;
+`
+
+export const ContNameTitle = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  width: 90%;
+  text-align: center;
 `

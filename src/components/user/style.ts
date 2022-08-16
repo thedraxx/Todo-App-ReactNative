@@ -29,4 +29,5 @@ export const TextUsser = styled.Text`
  `
 export const TextLen = styled.Text`
     font-size: 15px;
+    color: ${colors.black};
 `

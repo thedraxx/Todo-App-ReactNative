@@ -1,17 +1,13 @@
-import { Alert, View } from 'react-native'
-import { useDispatch } from 'react-redux'
+import { View } from 'react-native'
 import DatePicker from 'react-native-date-picker'
 import React, { useEffect } from 'react'
 import DropDownPicker from 'react-native-dropdown-picker'
 import { hooksPickers } from '../../hooks/hooksPickers'
 import { hookOnChange } from '../../hooks/hookOnChange'
-import { addTodo } from '../../store/slice/TodoSlice'
-import { ButtonDeadline, ButtonTime, CustomView, MyButton, TextButon, TextDeadLine, TextDreopdown, TextInputCustom, TextTime, TextTimeInput, TextTitles, ViewNewTask, ViewPicker, ViewPickerRemind, ViewPickerRepeat, ViewTime } from './styles'
+import { ButtonDeadline, ButtonTime, ContainerDeadline, ContainerTittle, ViewStartEnd, TextDeadLine, TextDreopdown, TextInputCustom, TextTime, TextTimeInput, TextTitles, ViewDeadline, ViewNewTask, ViewPicker, ViewPickerRemind, ViewPickerRepeat, ViewTime, ContNameTitle } from './styles'
+import { ButtonInitNewTask } from '../../components/buttons/InitNewTask/ButtonInitNewTask'
 
 const NewTask = ({ navigation }: any) => {
-  // Dispatch redux
-  const dispatch = useDispatch()
-
   // Pickers from Time and Dropdown
   const {
     dateDeadline,
@@ -43,16 +39,6 @@ const NewTask = ({ navigation }: any) => {
   // This manage the state of the input
   const { handleChange, onChange } = hookOnChange()
 
-  //  When the user press the button to add a new task
-  const handleSubmit = () => {
-    if (onChange.title === '' || onChange.deadline === '' || onChange.startTime === '' || onChange.endTime === '' || onChange.Remind === '' || onChange.repeat === '') {
-      return Alert.alert('Please fill all the fields')
-    } else {
-      dispatch(addTodo(onChange))
-      navigation.navigate('To-Do App')
-    }
-  }
-
   // UseEffect Listen the changes of the deadline
   useEffect(() => {
     handleChange('deadline', dateDeadline.toLocaleString())
@@ -80,38 +66,45 @@ const NewTask = ({ navigation }: any) => {
 
   return (
     <ViewNewTask>
-      <TextTitles>Title</TextTitles>
-      <TextInputCustom
-        placeholder="Design team meeting"
-        onChangeText={(text: string) => handleChange('title', text)}
-      />
-
-      <TextDeadLine>Deadline</TextDeadLine>
-      <ViewTime>
-        <ButtonDeadline onPress={() => setOpenDateDeadline(true)}>
-          <View>
-            <TextTimeInput>{` ${dateDeadline.getMonth()} - ${dateDeadline.getDate()} - ${dateDeadline.getFullYear()}`}</TextTimeInput>
-          </View>
-        </ButtonDeadline>
-        <DatePicker
-          mode="date"
-          locale="en-US"
-          modal
-          open={openDateDeadline}
-          date={dateDeadline}
-          onConfirm={(date) => {
-            setOpenDateDeadline(false)
-            setDeadline(date)
-          }}
-          onCancel={() => {
-            setOpenDateDeadline(false)
-          }}
+      <ContainerTittle>
+        <ContNameTitle>
+          <TextTitles>Title</TextTitles>
+        </ContNameTitle>
+        <TextInputCustom
+          placeholder="Design team meeting"
+          onChangeText={(text: string) => handleChange('title', text)}
         />
-      </ViewTime>
-      <CustomView>
+      </ContainerTittle>
+
+      <ContainerDeadline>
+        <ContNameTitle>
+          <TextDeadLine>Deadline</TextDeadLine>
+        </ContNameTitle>
+        <ViewDeadline>
+          <ButtonDeadline onPress={() => setOpenDateDeadline(true)}>
+            <TextTimeInput>{` ${dateDeadline.getMonth()} - ${dateDeadline.getDate()} - ${dateDeadline.getFullYear()}`}</TextTimeInput>
+          </ButtonDeadline>
+          <DatePicker
+            mode="date"
+            locale="en-US"
+            modal
+            open={openDateDeadline}
+            date={dateDeadline}
+            onConfirm={(date) => {
+              setOpenDateDeadline(false)
+              setDeadline(date)
+            }}
+            onCancel={() => {
+              setOpenDateDeadline(false)
+            }}
+          />
+        </ViewDeadline>
+      </ContainerDeadline>
+
+      <ViewStartEnd>
         <TextTime>Start time</TextTime>
         <TextTime>End time</TextTime>
-      </CustomView>
+      </ViewStartEnd>
 
       <ViewTime>
         <ButtonTime onPress={() => setOpenInit(true)}>
@@ -154,10 +147,9 @@ const NewTask = ({ navigation }: any) => {
           }}
         />
       </ViewTime>
-      {/* Dropdown */}
+
       <ViewPicker>
         <ViewPickerRemind>
-
           <TextDreopdown>Remind</TextDreopdown>
           <DropDownPicker
             open={openRemind}
@@ -168,8 +160,8 @@ const NewTask = ({ navigation }: any) => {
             setItems={setItemsRemind}
           />
         </ViewPickerRemind>
-        <ViewPickerRepeat>
 
+        <ViewPickerRepeat>
           <TextDreopdown>Repeat</TextDreopdown>
           <DropDownPicker
             open={openRepeat}
@@ -181,14 +173,9 @@ const NewTask = ({ navigation }: any) => {
           />
         </ViewPickerRepeat>
       </ViewPicker>
-
-      <MyButton onPress={handleSubmit}>
-        <View>
-          <TextButon>Create a Task</TextButon>
-        </View>
-      </MyButton>
-
+      <ButtonInitNewTask onChange={onChange} navigation={navigation} />
     </ViewNewTask>
+
   )
 }
 export default NewTask

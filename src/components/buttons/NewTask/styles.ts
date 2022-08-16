@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import { colors } from '../../utilities/colors'
+import { colors } from '../../../utilities/colors'
 
 export const ViewButton = styled.View`
     display: flex;
@@ -33,5 +33,4 @@ export const TextButon = styled.Text`
   text-align: center;
   align-self: center;
   justify-content: center;
-
 `
