@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
-import { ChangeCompleted } from '../../../store/slice/TodoSlice'
-import { MyTextTask, MyTextTaskCompleted, MyTextTaskPending, ViewCompletedTasks, ViewPending } from './styles'
+import { ChangeCompleted, RemoveTodo } from '../../../store/slice/TodoSlice'
+import { ButtonRemove, ContainerButtonRemove, ContainerTextTask, MyTextTask, MyTextTaskCompleted, MyTextTaskPending, RemoveText, ViewCompletedTasks, ViewPending } from './styles'
 
 export const Pending = () => {
   const dispatch = useDispatch()
@@ -20,6 +20,10 @@ export const Pending = () => {
   useEffect(() => {
     setTasks(todos)
   }, [todos])
+
+  const RemoveTask = (id: number) => {
+    dispatch(RemoveTodo(id))
+  }
 
   return (
     <FlatList
@@ -42,11 +46,18 @@ export const Pending = () => {
                   iconStyle={{ borderColor: 'red' }}
                   onPress={() => HandleSelected(item._id)}
                 />
-                {
-                  item.completed
-                    ? <MyTextTaskCompleted>{item.title}</MyTextTaskCompleted>
-                    : <MyTextTask>{item.title}</MyTextTask>
-                }
+                <ContainerTextTask>
+                  {
+                    item.completed
+                      ? <MyTextTaskCompleted>{item.title}</MyTextTaskCompleted>
+                      : <MyTextTask>{item.title}</MyTextTask>
+                  }
+                </ContainerTextTask>
+                <ContainerButtonRemove>
+                  <ButtonRemove onPress={() => RemoveTask(item._id) }>
+                    <RemoveText>x</RemoveText>
+                  </ButtonRemove>
+                </ContainerButtonRemove>
 
               </ViewCompletedTasks>
               )}
