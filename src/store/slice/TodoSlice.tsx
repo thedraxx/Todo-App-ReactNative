@@ -13,7 +13,7 @@ export const todoSlice = createSlice({
       console.log('desde addtodo', state.todos)
     },
 
-    ChangeCompleted: (state: { todos: string[] }, { payload }: any) => {
+    ChangeCompleted: (state: { todos:any[]}, { payload }: any) => {
       return state.todos.map((task: any) => {
         if (task._id === payload) {
           task.completed = !task.completed

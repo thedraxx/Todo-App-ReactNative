@@ -10,7 +10,8 @@ export const hookOnChange = () => {
     startTime: '',
     endTime: '',
     Remind: '',
-    repeat: ''
+    repeat: '',
+    isCompleted: false
   })
 
   // This manage the state of the input

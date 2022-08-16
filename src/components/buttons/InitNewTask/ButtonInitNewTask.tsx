@@ -4,8 +4,7 @@ import { useDispatch } from 'react-redux'
 import { addTodo } from '../../../store/slice/TodoSlice'
 import { ContainerButton, MyButton, TextButon } from './style'
 
-export const ButtonInitNewTask = ({ onChange, navigation }) => {
-  console.log('desde ButtonInitNewTask', onChange)
+export const ButtonInitNewTask = ({ onChange, navigation }: any) => {
   // Dispatch redux
   const dispatch = useDispatch()
   //  When the user press the button to add a new task
