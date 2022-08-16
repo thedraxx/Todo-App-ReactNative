@@ -9,12 +9,12 @@ export const ButtonInitNewTask = ({ onChange, navigation }: any) => {
   const dispatch = useDispatch()
   //  When the user press the button to add a new task
   const handleSubmit = () => {
-    if (onChange.title === '' || onChange.deadline === '' || onChange.startTime === '' || onChange.endTime === '' || onChange.Remind === '' || onChange.repeat === '') {
-      return Alert.alert('Please fill all the fields')
-    } else {
-      dispatch(addTodo(onChange))
-      navigation.navigate('To-Do App')
-    }
+    // if (onChange.title === '' || onChange.deadline === '' || onChange.startTime === '' || onChange.endTime === '' || onChange.Remind === '' || onChange.repeat === '') {
+    //   return Alert.alert('Please fill all the fields')
+    // } else {
+    dispatch(addTodo(onChange))
+    navigation.navigate('To-Do App')
+    // }
   }
 
   return (
