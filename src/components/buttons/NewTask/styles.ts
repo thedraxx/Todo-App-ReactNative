@@ -6,8 +6,8 @@ export const ViewButton = styled.View`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    bottom: 10px;
-    right: 10px;
+    bottom: 51%;
+    right: 5px;
     position: absolute;
 `
 
