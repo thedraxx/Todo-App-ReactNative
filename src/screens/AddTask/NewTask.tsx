@@ -1,33 +1,13 @@
-import { TextInput, View } from 'react-native'
-import { useDispatch } from 'react-redux'
+import { View } from 'react-native'
 import DatePicker from 'react-native-date-picker'
 import React, { useEffect } from 'react'
 import DropDownPicker from 'react-native-dropdown-picker'
-import { hooksPickers } from '../hooks/hooksPickers'
-import { hookOnChange } from '../hooks/hookOnChange'
-import { addTodo } from '../store/slice/TodoSlice'
-import {
-  ButtonDeadline,
-  ButtonTime,
-  CustomView,
-  GeneralView,
-  MyButon,
-  TextButon,
-  TextDeadLine,
-  TextDreopdown,
-  TextTime,
-  TextTimeInput,
-  TextTitles,
-  ViewPicker,
-  ViewTime,
-  ViewPickerRemind,
-  ViewPickerRepeat
-} from '../styles/styles'
+import { hooksPickers } from '../../hooks/hooksPickers'
+import { hookOnChange } from '../../hooks/hookOnChange'
+import { ButtonDeadline, ButtonTime, ContainerDeadline, ContainerTittle, ViewStartEnd, TextDeadLine, TextDreopdown, TextInputCustom, TextTime, TextTimeInput, TextTitles, ViewDeadline, ViewNewTask, ViewPicker, ViewPickerRemind, ViewPickerRepeat, ViewTime, ContNameTitle } from './styles'
+import { ButtonInitNewTask } from '../../components/buttons/InitNewTask/ButtonInitNewTask'
 
-export function NewTask ({ navigation }: any) {
-  // Dispatch redux
-  const dispatch = useDispatch()
-
+const NewTask = ({ navigation }: any) => {
   // Pickers from Time and Dropdown
   const {
     dateDeadline,
@@ -59,12 +39,6 @@ export function NewTask ({ navigation }: any) {
   // This manage the state of the input
   const { handleChange, onChange } = hookOnChange()
 
-  //  When the user press the button to add a new task
-  const handleSubmit = () => {
-    dispatch(addTodo(onChange))
-    navigation.navigate('To-Do App')
-  }
-
   // UseEffect Listen the changes of the deadline
   useEffect(() => {
     handleChange('deadline', dateDeadline.toLocaleString())
@@ -91,48 +65,46 @@ export function NewTask ({ navigation }: any) {
   }, [openRepeat])
 
   return (
-    <GeneralView style={{ backgroundColor: 'white' }}>
-      <TextTitles>Title</TextTitles>
-      <TextInput
-        placeholder="Design team meeting"
-        onChangeText={(text) => handleChange('title', text)}
-        style={{
-          borderColor: 'white',
-          backgroundColor: '#ededed',
-          color: 'black',
-          borderWidth: 1,
-          padding: 15,
-          margin: 20,
-          borderRadius: 10
-        }}
-      />
-
-      <TextDeadLine>Deadline</TextDeadLine>
-      <ViewTime>
-        <ButtonDeadline onPress={() => setOpenDateDeadline(true)}>
-          <View>
-            <TextTimeInput>{` ${dateDeadline.getMonth()} - ${dateDeadline.getDate()} - ${dateDeadline.getFullYear()}`}</TextTimeInput>
-          </View>
-        </ButtonDeadline>
-        <DatePicker
-          mode="date"
-          locale="en-US"
-          modal
-          open={openDateDeadline}
-          date={dateDeadline}
-          onConfirm={(date) => {
-            setOpenDateDeadline(false)
-            setDeadline(date)
-          }}
-          onCancel={() => {
-            setOpenDateDeadline(false)
-          }}
+    <ViewNewTask>
+      <ContainerTittle>
+        <ContNameTitle>
+          <TextTitles>Title</TextTitles>
+        </ContNameTitle>
+        <TextInputCustom
+          placeholder="Design team meeting"
+          onChangeText={(text: string) => handleChange('title', text)}
         />
-      </ViewTime>
-      <CustomView>
+      </ContainerTittle>
+
+      <ContainerDeadline>
+        <ContNameTitle>
+          <TextDeadLine>Deadline</TextDeadLine>
+        </ContNameTitle>
+        <ViewDeadline>
+          <ButtonDeadline onPress={() => setOpenDateDeadline(true)}>
+            <TextTimeInput>{` ${dateDeadline.getMonth()} - ${dateDeadline.getDate()} - ${dateDeadline.getFullYear()}`}</TextTimeInput>
+          </ButtonDeadline>
+          <DatePicker
+            mode="date"
+            locale="en-US"
+            modal
+            open={openDateDeadline}
+            date={dateDeadline}
+            onConfirm={(date) => {
+              setOpenDateDeadline(false)
+              setDeadline(date)
+            }}
+            onCancel={() => {
+              setOpenDateDeadline(false)
+            }}
+          />
+        </ViewDeadline>
+      </ContainerDeadline>
+
+      <ViewStartEnd>
         <TextTime>Start time</TextTime>
         <TextTime>End time</TextTime>
-      </CustomView>
+      </ViewStartEnd>
 
       <ViewTime>
         <ButtonTime onPress={() => setOpenInit(true)}>
@@ -175,39 +147,35 @@ export function NewTask ({ navigation }: any) {
           }}
         />
       </ViewTime>
-      {/* Dropdown */}
+
       <ViewPicker>
         <ViewPickerRemind>
-
-        <TextDreopdown>Remind</TextDreopdown>
-        <DropDownPicker
-        open={openRemind}
-        value={valueRemind}
-        items={itemsRemind}
-        setOpen={setOpenRemind}
-        setValue={setValueRemind}
-        setItems={setItemsRemind}
-      />
+          <TextDreopdown>Remind</TextDreopdown>
+          <DropDownPicker
+            open={openRemind}
+            value={valueRemind}
+            items={itemsRemind}
+            setOpen={setOpenRemind}
+            setValue={setValueRemind}
+            setItems={setItemsRemind}
+          />
         </ViewPickerRemind>
+
         <ViewPickerRepeat>
-
-      <TextDreopdown>Repeat</TextDreopdown>
-        <DropDownPicker
-        open={openRepeat}
-        value={valueRepeat}
-        items={itemsRepeat}
-        setOpen={setOpenRepeat}
-        setValue={setValueRepeat}
-        setItems={setItemsRepeat}
-      />
-              </ViewPickerRepeat>
+          <TextDreopdown>Repeat</TextDreopdown>
+          <DropDownPicker
+            open={openRepeat}
+            value={valueRepeat}
+            items={itemsRepeat}
+            setOpen={setOpenRepeat}
+            setValue={setValueRepeat}
+            setItems={setItemsRepeat}
+          />
+        </ViewPickerRepeat>
       </ViewPicker>
+      <ButtonInitNewTask onChange={onChange} navigation={navigation} />
+    </ViewNewTask>
 
-      <MyButon onPress={handleSubmit}>
-        <View>
-          <TextButon>Create a Task</TextButon>
-        </View>
-      </MyButon>
-    </GeneralView>
   )
 }
+export default NewTask

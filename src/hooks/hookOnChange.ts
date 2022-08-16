@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { inputs } from '../interfaces/generalInterfaces.d'
+import { inputs } from '../interfaces/generalInterfaces'
 
 export const hookOnChange = () => {
   // The form of the inputs to complete
@@ -10,7 +10,8 @@ export const hookOnChange = () => {
     startTime: '',
     endTime: '',
     Remind: '',
-    repeat: ''
+    repeat: '',
+    isCompleted: false
   })
 
   // This manage the state of the input
