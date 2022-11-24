@@ -1,12 +1,26 @@
-<h1 align="center">Welcome 👋</h1>
-<p>
-  <a href="https://twitter.com/ThedraxxWorld" target="_blank">
-    <img alt="Twitter: thedraxx" src="https://img.shields.io/twitter/follow/ThedraxxWorld.svg?style=social" />
-  </a>
-</p>
+<h1 align="center"> Hello Everyone 🪐👋</h1>
 
-<br> This repository consist in a To-Do App made in React Native .</br>
+## 🤖 About App:
+        This app was made with the purpose of made a TODO-APP, you can create, delete and Mark completed each task every task you create
 
+## 📷 Screenshots
+
+## HOME SCREEN:
+
+![Home](https://user-images.githubusercontent.com/55867157/203825603-9732c655-6e90-4862-a4bf-2115598de05a.png)
+
+## ADD TASK:
+![AddTask](https://user-images.githubusercontent.com/55867157/203825661-3cb45fc7-23a3-4a1e-b722-b89479687a3b.png)
+
+## TASK ADDED:
+![taskadded](https://user-images.githubusercontent.com/55867157/203825718-7495a02e-0bed-4ae7-87cf-0ce028b7315e.png)
+
+## TASK COMPLETED
+![taskcompleted](https://user-images.githubusercontent.com/55867157/203825766-f57a6232-df06-4dd9-b739-3d4d06bbe4e1.png)
+
+## 🎥 A little video of the app:
+
+https://user-images.githubusercontent.com/55867157/203825820-15fefcce-fd3b-4e56-be31-75df2a0d4a9d.mp4
 
 <br> The app is made with the following technologies:</br>
 
